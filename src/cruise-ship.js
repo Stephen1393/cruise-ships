@@ -1,6 +1,6 @@
 class Ship {
-    constructor(startingPort) {
-        this.startingPort = startingPort;
+    constructor(currentPort) {
+        this.currentPort = currentPort;
         this.atSea = false;
         
     }
@@ -10,7 +10,10 @@ class Ship {
         this.atSea = true
     }
  }
-        
+  dock(port) {
+    this.currentPort = port
+    this.atSea = false;
+  }      
 }
 
 module.exports = Ship
