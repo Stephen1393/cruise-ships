@@ -1,7 +1,11 @@
+
+
 class Ship {
-    constructor(currentPort) {
-        this.currentPort = currentPort;
+    constructor(itinerary) {
+      this.itinerary = itinerary
+        this.currentPort = itinerary.ports[0];
         this.atSea = false;
+        this.previousPort = null;
         
     }
 
@@ -9,10 +13,15 @@ class Ship {
     if (this.atSea === false) {
         this.atSea = true
     }
+    this.previousPort = this.currentPort
+    this.currentPort = null;
+    
  }
-  dock(port) {
-    this.currentPort = port
+ 
+  dock() {
+    this.currentPort = this.itinerary.ports[1]
     this.atSea = false;
+    
   }      
 }
 

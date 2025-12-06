@@ -1,21 +1,26 @@
 const Ship = require('../src/cruise-ship');
 const Port = require('../src/Port'); 
+const Itinerary = require('../src/Itinerary');
 
 describe('constructor', () => {
     it('returns an object with a starting point property', () => {
 
         const dover = new Port('Dover');
-        const ship = new Ship(dover);
+        const exeter = new Port('Exeter')
+
+        const plan = new Itinerary(dover,exeter)
+        const ship = new Ship(plan)
 
         
-        expect(ship.currentPort).toBe(dover)
+        expect(ship.currentPort).toBe(plan.ports[1])
         expect(ship).toBeInstanceOf(Object)
     });
     
     describe('setSail', () => {
         it('checks whether ship atSea is false, and changes to true if so.', () => {
             const dover = new Port('Dover');
-            const ship = new Ship(dover);
+            const plan = new Itinerary(dover)
+            const ship = new Ship(plan);
 
             ship.setSail()
             
@@ -24,15 +29,17 @@ describe('constructor', () => {
     });
 
     it('Can dock at a different port', () => {
-        const dover = new Port('Dover')
-        const ship = new Ship(dover)
+        const dover = new Port('dover');
+        const exeter = new Port('Exeter');
 
-        const calais = new Port('Calais')
+        const plan = new Itinerary([dover,exeter]);
+        const ship = new Ship(plan)
+
 
         ship.setSail()
-        ship.dock(calais)
+        ship.dock()
 
-    expect(ship.currentPort).toBe(calais); 
+    expect(ship.currentPort).toBe(plan.ports[1]); 
     expect(ship.atSea).toBe(false); 
     });
 });
