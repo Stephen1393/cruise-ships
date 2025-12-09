@@ -7,14 +7,18 @@ class Ship {
         this.atSea = false;
         this.previousPort = null;
         
+        this.currentPort.addShip(this);
+        
     }
 
  setSail() {
     if (this.atSea === false) {
         this.atSea = true
     }
+    this.currentPort.removeShip(this)
     this.previousPort = this.currentPort
     this.currentPort = null;
+    
     
  }
  
