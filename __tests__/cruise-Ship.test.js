@@ -9,13 +9,14 @@ describe('ship', () => {
     let itinerary;
     let port;
 
-    describe('constructor', () => {
-        beforeEach(() => {
+    beforeEach(() => {
             port = new Port('Dover'); 
             itinerary = new Itinerary([port]) 
             ship = new Ship(itinerary)  
         });
     
+
+    describe('constructor', () => {
         
         it('returns an object with a starting point property', () => {
             expect(ship.currentPort).toBe(itinerary.ports[0]) 
@@ -23,7 +24,7 @@ describe('ship', () => {
         });
         
         it('gets added to port on instantiation', () => { 
-            expect(port.ships).toContain(ship)
+            expect(port.ships).toContain(ship) 
         }); 
 
 
