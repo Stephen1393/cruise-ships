@@ -25,6 +25,7 @@ class Ship {
   dock() {
     this.currentPort = this.itinerary.ports[1]
     this.atSea = false;
+    this.currentPort.addShip(this)
     
   }      
 }
